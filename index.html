@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+.login{
+top: 20%;
+}
+</style>
+</head>
+
+<body>
+ <div class="login">
+	<h1>Patient Readmitted or Not</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="/y_predict" method="post">
+        <input type="text" name="gender" placeholder="gender" required="required" />
+		<input type="text" name="age" placeholder="age" required="required" />
+        <input type="text" name="admission_type_id" placeholder="admission_type_id" required="required" />
+        <input type="text" name="discharge_disposition_id" placeholder="discharge_disposition_id" required="required" />
+        <input type="text" name="admission_source_id" placeholder="admission_source_id" required="required" />
+        <input type="text" name="time_in_hospital" placeholder="time_in_hospital" required="required" />
+        <input type="text" name="num_lab_procedures" placeholder="num_lab_procedures" required="required" />
+        <input type="text" name="num_procedures" placeholder="num_procedures" required="required" />
+	<input type="text" name="num_medications" placeholder="num_medications" required="required" />
+	<input type="text" name="number_diagnoses" placeholder="number_diagnoses" required="required" />
+	<input type="text" name="max_glu_serum" placeholder="max_glu_serum" required="required" />
+	<input type="text" name="A1Cresult" placeholder="A1Cresult" required="required" />
+	<input type="text" name="change" placeholder="change" required="required" />
+	<input type="text" name="diabetesMed" placeholder="diabetesMed" required="required" />
+	<input type="text" name="total_visits" placeholder="total_visits" required="required" />
+	<input type="text" name="treatments_taken" placeholder="treatments_taken" required="required" />
+	<input type="text" name="diag_1_category" placeholder="diag_1_category" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
+
